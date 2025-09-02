@@ -1,35 +1,45 @@
 {% load static %}
 
 <header class="header">
-    <!-- 🔷 Logo -->
+    <!-- Logo -->
     <div class="logo">
         <a href="/">
-            <img src="/static/edcnews/images/logo.png" alt="Logo da Empresa">
+            <img src="{% static 'edcnews/images/logo.png' %}" alt="Logo da Empresa">
         </a>
     </div>
 
-    <!-- 🔽 Barra abaixo da logo -->
-    <div class="items-container">
-        <!-- 🔍 Busca -->
+    <!-- Botão do hambúrguer -->
+    <button class="menu-toggle">
+        <i class="fa-solid fa-bars"></i>
+    </button>
+
+    <!-- Menu -->
+    <nav class="menu">
+        
+                <!-- Busca -->
         <div class="search">
-            <a href="">
+            <a href="javascript:void(0)" onclick="toggleSearch()">
                 <i class="fa-solid fa-magnifying-glass"></i>
             </a>
         </div>
 
-        <!-- 📑 Menu -->
-        <nav class="menu">
-            <button class="menu-toggle">
-                <i class="fa-solid fa-bars"></i>
-            </button>
-            <ul>
-                <li><a href="">About</a></li>
-                <li><a href="">Contact</a></li>
-                <li><a href="">Blog</a></li>
-            </ul>
-        </nav>
+        <div class="search-bar" id="search-bar">
+            <form action="{% url 'search' %}" method="get">
+                <input type="text" name="q" placeholder="Buscar..." class="search-input">
+                <button type="submit" class="search-btn">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+            </form>
+        </div>
+        
+        
+        <ul class="menu-links">
+            <li><a href="">About</a></li>
+            <li><a href="">Contact</a></li>
+            <li><a href="">Blog</a></li>
+        </ul>
 
-        <!-- 🌐 Redes Sociais -->
+        <!-- Redes sociais -->
         <div class="social">
             <ul>
                 <li><a href="https://www.facebook.com/"><i class="fa-brands fa-facebook"></i></a></li>
@@ -38,6 +48,5 @@
                 <li><a href="https://x.com/"><i class="fa-brands fa-x-twitter"></i></a></li>
             </ul>
         </div>
-    </div>
+    </nav>
 </header>
-<script src="{% static 'js/menu.js' %}"></script>

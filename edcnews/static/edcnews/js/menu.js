@@ -1,6 +1,11 @@
 const toggleBtn = document.querySelector(".menu-toggle");
-const menuList = document.querySelector(".menu ul");
+const menu = document.querySelector(".menu");
 
 toggleBtn.addEventListener("click", () => {
-    menuList.classList.toggle("show");
+    menu.classList.toggle("active");
 });
+
+function toggleSearch() {
+    const searchBar = document.getElementById("search-bar");
+    searchBar.classList.toggle("active");
+}

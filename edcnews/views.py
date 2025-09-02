@@ -19,3 +19,6 @@ def category_news(request, category_id):
         'noticias': noticias,
         'categoria': noticias[0].categoria
         })
+
+def search(request):
+    return render(request, 'edcnews/pages/search.html')
