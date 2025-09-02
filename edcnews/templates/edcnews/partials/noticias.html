@@ -1,0 +1,29 @@
+<div class="noticias">
+    <div class="noticia">
+        <img src="{{ noticia.cover.url }}" alt="" class="imagem-noticia">
+        <div class="news-author">
+            <i class="fa-solid fa-circle-user"></i>
+            <div class="author-info">
+                <span class="author-item">
+                    {% if noticia.author %}
+                        {{ noticia.author.username }}
+                    {% else %}
+                        Autor Desconhecido
+                    {% endif %}
+                </span>
+                <span class="created-at">{{ noticia.data_publicacao|date:"d/m/Y" }}</span> 
+                <span class="news-category"><a href="">{{ noticia.categoria }}</a></span>
+            </div> 
+        </div>
+        
+        <div class="news-information">
+            <div class="news-title">
+                <a href="{% url 'news_detail' noticia.id %}"><h1 class="news-title">{{ noticia.titulo }}</h1></a>
+            </div>
+            <div class="news-description">
+                <a href="{% url 'news_detail' noticia.id %}"><p class="subtitle">{{ noticia.descricao }}</p></a>
+            </div>    
+        </div>
+
+    </div>
+</div>

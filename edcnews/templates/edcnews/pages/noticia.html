@@ -1,0 +1,37 @@
+{% extends "global/base.html" %}
+
+{% block title %}{{ noticia.titulo }}{% endblock %}
+
+{% block content %}
+    <div class="container-new">
+        <div class="news_detail">
+            <img src="{{ noticia.cover.url }}" alt="" class="detail-img">
+            <div class="news-author">
+                <i class="fa-solid fa-circle-user"></i>
+                <div class="author-info">
+                    <span class="author-item">
+                        {% if noticia.author %}
+                            {{ noticia.author.username }}
+                        {% else %}
+                            Autor Desconhecido
+                        {% endif %}
+                    </span>
+                    <span class="created-at">{{ noticia.data_publicacao|date:"d/m/Y" }}</span>
+                    <span class="news-category"><a href="">{{ noticia.categoria }}</a></span>
+                </div> 
+            </div>
+            
+            <div class="news-information">
+                <div class="news-title-detail">
+                    <h1>{{ noticia.titulo }}</h1>
+                </div>
+                <div class="news-description">
+                    <h2 class="subtitle">{{ noticia.descricao }}</h2>
+                    <div class="news-content">
+                        {{ noticia.conteudo|linebreaks }}
+                </div>    
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% load static %}
+{% include "edcnews/partials/head.html"%}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <title>{% block title %}home{% endblock title %}</title>
+</head>
+<body>
+    {% include 'edcnews/partials/header.html' %}
+
+
+    {% block content %}
+    {% endblock %}
+    <script src="{% static 'js/menu.js' %}"></script>
+</body>
+<footer>
+    {% include 'edcnews/partials/footer.html' %}
+</footer>
+</html>

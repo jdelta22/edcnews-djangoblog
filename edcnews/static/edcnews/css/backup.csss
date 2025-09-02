@@ -1,0 +1,75 @@
+.noticias {
+    display: flex;
+    margin: 0 auto;
+    flex-direction: column;
+    align-items: center;
+    max-width: 100rem;
+    padding-bottom: 3rem;
+}
+
+.noticia a{
+    text-decoration: none;
+    color: inherit;
+    font-size: 1rem;
+    max-width: max-content;
+}
+
+.noticia {
+    display: block;
+    margin: 0 auto;
+    align-items: center;
+    max-width: fit-content;
+    border: 1px solid #888;
+    ;
+}
+
+
+
+.news-author {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espaço entre o ícone e o texto */
+    padding-left: 3rem;
+}
+
+
+.news-author i {
+    font-size: 2rem;
+}
+
+.author-info {
+    display: flex;
+    flex-direction: column; /* um abaixo do outro */
+    line-height: 1.4;
+}
+
+.author-item {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.created-at {
+    font-size: 12px;
+    color: #888;
+}
+
+.news-information{
+    padding-left: 3rem;
+
+}
+
+.news-description p.subtitle {
+    display: -webkit-box;        /* necessário para limitar linhas */
+    -webkit-line-clamp: 3;       /* número de linhas que quer exibir */
+    line-clamp: 3;               /* padrão para compatibilidade */
+    -webkit-box-orient: vertical;
+    overflow: hidden;            /* esconde o excesso */
+    text-overflow: ellipsis;     /* mostra "..." no final */
+    line-height: 1.4;            /* altura da linha */
+    max-height: 4.2em;           /* opcional, line-height * linhas */
+}
+
+.news-description {
+    width: 100%;
+    max-width: 600px; /* ajuste conforme necessidade */
+}

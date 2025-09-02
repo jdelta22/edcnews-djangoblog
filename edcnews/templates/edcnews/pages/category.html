@@ -1,0 +1,23 @@
+{% extends "global/base.html" %}
+{% block title %}E.D.C. News - Categoria: {{ categoria.nome }}{% endblock %}
+{% include 'edcnews/partials/head.html'%}
+
+<body>
+        
+    {% block content %}
+        <main>
+            <div class="image-welcome">
+                <h1>Seja muito bem vindo ao E.D.C. News</h1>
+                <h2>Seu site de noticias favorito sobre produtos para edc</h2>
+            </div>
+        
+            
+            <div class="container-noticias">
+                {% for noticia in noticias %}
+                    {% include 'edcnews/partials/noticias.html' %}
+                {% endfor %}
+            </div>
+        </main>
+    {% endblock %}
+</body>
+</html>
