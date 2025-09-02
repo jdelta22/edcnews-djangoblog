@@ -12,7 +12,9 @@
                     {% endif %}
                 </span>
                 <span class="created-at">{{ noticia.data_publicacao|date:"d/m/Y" }}</span> 
-                <span class="news-category"><a href="">{{ noticia.categoria }}</a></span>
+                <span class="news-category">
+                    <a href="{% url 'category_news' noticia.categoria.id %}">{{ noticia.categoria.nome }}</a>
+                </span>
             </div> 
         </div>
         
