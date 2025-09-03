@@ -1,0 +1,34 @@
+{% extends "global/base.html" %}
+
+{% block title %}E.D.C. News - Sobre{% endblock %}
+{% include 'edcnews/partials/head.html'%}
+
+<body>
+    
+    {% block content %}
+        <main>
+            {% include 'edcnews/partials/imagem-welcome.html' %}
+        
+            <div class="container-noticias">
+                <div class="long-about">
+                 <h1>Sobre</h1>
+                 <p>
+                    Oque é EDC?
+
+                    EDC é a sigla para every day carry, em tradução livre: carregar todos os dias.
+                    Se refere a equipamentos de uso diario, usados para tanto para tarefas comuns, quanto para emergencias
+
+                    A cultura do EDC começou com os preparadores nos Estados Unidos, pois em sua cultura, mais vale a pena
+                    ter e não usar, que não ter.
+
+                    Por meio deste portal venho trazer noticias e reviews dos melhores equipamentos do mercado.
+                 </p>
+
+        
+                </div>
+            </div>
+            </main>
+
+    {% endblock %}
+</body>
+</html>

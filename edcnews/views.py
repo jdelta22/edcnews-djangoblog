@@ -1,5 +1,5 @@
 from django.shortcuts import render,get_list_or_404
-from .models import Noticia, Categoria
+from .models import Noticia
 # Create your views here.
 def home(request):
     noticias = Noticia.objects.order_by('-data_publicacao')[:3]
@@ -21,4 +21,19 @@ def category_news(request, category_id):
         })
 
 def search(request):
-    return render(request, 'edcnews/pages/search.html')
+    query = request.GET.get("q")
+
+    results = []
+
+    if query:
+        results = Noticia.objects.filter(titulo__icontains=query) | Noticia.objects.filter(descricao__icontains=query)
+    return render(request, 'edcnews/pages/search.html', context={
+        "query": query,
+        "results": results
+    })
+
+def about(request):
+    return render(request, 'edcnews/pages/about.html')
+
+def contact(request):
+    return render(request, 'edcnews/pages/contact.html')

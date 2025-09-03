@@ -1,6 +1,6 @@
 {% extends "global/base.html" %}
 
-{% block title %}E.D.C. News - Home{% endblock %}
+{% block title %}E.D.C. News - Contato{% endblock %}
 {% include 'edcnews/partials/head.html'%}
 
 <body>
@@ -10,12 +10,14 @@
             {% include 'edcnews/partials/imagem-welcome.html' %}
         
             <div class="container-noticias">
-                {% for noticia in results %}
-                    {% include 'edcnews/partials/noticias.html' %}
-                {% endfor %}
-            
-                <div class="see-more">
-                    <a href="{% url 'all_news' %}">Ver tudo ...</a>
+                <div class="long-about">
+                 <h1>Sobre</h1>
+                 <p>
+                    jotao22gm@gmail.com
+                    (82)987026221
+                 </p>
+
+        
                 </div>
             </div>
             </main>
