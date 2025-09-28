@@ -10,7 +10,7 @@
             {% include 'edcnews/partials/imagem-welcome.html' %}
         
             <div class="container-noticias">
-                {% for noticia in results %}
+                {% for noticia in noticias %}
                     {% include 'edcnews/partials/noticias.html' %}
                 {% endfor %}
             
@@ -18,8 +18,8 @@
                     <a href="{% url 'all_news' %}">Ver tudo ...</a>
                 </div>
             </div>
+            {% include 'edcnews/partials/pagination.html' %}
             </main>
-
     {% endblock %}
 </body>
 </html>

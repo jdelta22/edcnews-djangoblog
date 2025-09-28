@@ -1,0 +1,28 @@
+<div class="container-pagination">
+  <ul class="pagination justify-content-center">
+
+    <!-- Botão anterior -->
+    {% if noticias.has_previous %}
+        <li class="page-item"><a class="page-link" href="?q={{ query }}&page={{ noticias.previous_page_number }}">&laquo;</a></li>
+    {% else %}
+        <li class="page-item disabled"><span class="page-link">&laquo;</span></li>
+    {% endif %}
+
+    <!-- Números -->
+    {% for num in page_range %}
+      {% if num == noticias.number %}
+          <li class="page-item active"><span class="page-link">{{ num }}</span></li>
+      {% else %}
+          <li class="page-item"><a class="page-link" href="?q={{ query }}&page={{ num }}">{{ num }}</a></li>
+      {% endif %}
+    {% endfor %}
+
+    <!-- Botão próximo -->
+    {% if noticias.has_next %}
+        <li class="page-item"><a class="page-link" href="?q={{ query }}&page={{ noticias.next_page_number }}">&raquo;</a></li>
+    {% else %}
+        <li class="page-item disabled"><span class="page-link">&raquo;</span></li>
+    {% endif %}
+
+  </ul>
+</nav>

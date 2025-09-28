@@ -71,7 +71,7 @@ body {
     display: none;
     position: absolute;
     top: 70px;
-    right: 2rem;
+    right: 18rem;
     background: #fff;
     padding: 0.5rem;
     border-radius: 5px;
@@ -150,8 +150,10 @@ body {
 
     .search-bar {
         position: static;
+        right: 3rem;
         width: 100%;
-        margin-top: 1rem;
+        margin-top: 0.5rem;
+        padding: 0;
     }
 }
 
@@ -159,7 +161,7 @@ body {
     background: url('/static/edcnews/images/primeiraimg.jpg') no-repeat center center/cover;
     height: 10rem;
     display: flex;
-    padding: 10rem;
+    padding: 5rem;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -462,4 +464,38 @@ body {
     text-decoration: none;
     color: #db8310;
     font-weight: bold;
+}
+
+.container-pagination {
+    display: flex;
+    justify-content: center;
+}
+
+.container-pagination ul {
+    list-style: none;
+    display: flex;
+    gap: 0.5rem;
+    padding: 0;
+}
+.container-pagination ul li {
+    margin: 0;
+}
+
+.container-pagination a {
+    text-decoration: none;
+    color: #333;
+    font-size: 2rem;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.container-pagination span {
+    font-size: 2rem;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #333;
+    color: #fff;
 }
