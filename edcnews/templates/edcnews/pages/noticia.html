@@ -4,8 +4,8 @@
 
 {% block content %}
     <div class="container-new">
-        <div class="news_detail">
-            <img src="{{ noticia.cover.url }}" alt="" class="detail-img">
+        <div class="news_detail-uni">
+            <img src="{{ noticia.cover.url }}" alt="" class="detail-img-uni">
             <div class="news-author">
                 <i class="fa-solid fa-circle-user"></i>
                 <div class="author-info">
@@ -22,12 +22,12 @@
             </div>
             
             <div class="news-information">
-                <div class="news-title-detail">
+                <div class="news-title-detail-uni">
                     <h1>{{ noticia.titulo }}</h1>
                 </div>
                 <div class="news-description">
-                    <h2 class="subtitle">{{ noticia.descricao }}</h2>
-                    <div class="news-content">
+                    <h2 class="subtitle-uni">{{ noticia.descricao }}</h2>
+                    <div class="news-content-uni">
                         {{ noticia.conteudo|linebreaks }}
                 </div>    
             </div>

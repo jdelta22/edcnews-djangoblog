@@ -192,8 +192,8 @@ body {
 
 .cat-laminas, .cat-lanternas, .cat-multitools {
     display: inline-block;
-    width: 20rem;
-    height: 20rem;
+    width: 15rem;
+    height: 15rem;
     background-color: #fff;
     border-radius: 10px;
     text-align: center;
@@ -242,8 +242,9 @@ body {
 }
 
 .texto-recentes{
+    max-width: fit-content;
     margin: 0 auto;
-    padding: 3rem;
+    padding: 1rem;
     text-align: center;
     border: 3px solid #434e88ff;
 }
@@ -498,4 +499,71 @@ body {
     border-radius: 5px;
     background-color: #333;
     color: #fff;
+}
+
+.news_detail-uni {
+    margin: 0 auto;
+    max-width: 70rem;          /* largura máxima do conteúdo */
+    width: 100%;
+    background: #fff;          /* fundo branco */
+    padding: 20px;
+    border-radius: 10px;       /* cantos arredondados */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* leve sombra */
+}
+
+.news_detail-uni .news-author {
+    padding-left: 3.5rem;
+}
+
+.detail-img-uni {
+    display: block;
+    margin: 0 auto 20px auto;  /* centraliza imagem e dá espaçamento embaixo */
+    max-width: 100%;           /* imagem nunca passa da largura do container */
+    height: auto;
+    border-radius: 8px;
+}
+
+.news-title-detail-uni h1 {
+    text-align: center;        /* título centralizado */
+    margin-bottom: 15px;
+}
+
+.subtitle-uni {
+    text-align: center;
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin-bottom: 20px;
+    color: #555;
+}
+
+.news-content-uni {
+    font-size: 1rem;
+    line-height: 1.7;
+    text-align: justify;       /* justificado */
+    color: #333;
+}
+
+.long-about {
+    max-width: 70rem; 
+    margin: 0 auto 20px auto;        
+    width: 100%;
+    background: #fff;          /* fundo branco */
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.long-about h1 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #222;
+}
+
+.long-about p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 15px;
+    text-align: justify;       /* texto justificado */
+    color: #444;
 }
