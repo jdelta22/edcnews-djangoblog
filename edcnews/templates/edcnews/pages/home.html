@@ -16,14 +16,12 @@
                     <h1>Notícias Recentes</h1>
                 </div>
             
-        
-                {% for noticia in noticias %}
-                    {% include 'edcnews/partials/noticias.html' %}
-                {% endfor %}
-            
-                <div class="see-more">
-                    <a href="{% url 'all_news' %}">Ver tudo ...</a>
-                </div>
+                <div id="news-container">
+                    {% include 'edcnews/partials/news-itens.html' %}
+                </div>  
+                
+                <div id="loading" style="display:none;">Carregando...</div>
+
             </div>
             </main>
 

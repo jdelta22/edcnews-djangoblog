@@ -1,0 +1,67 @@
+<h1>Criar Notícia</h1>
+
+<style>
+#editor {
+    border: 1px solid #ccc;
+    min-height: 350px;
+    padding: 15px;
+    border-radius: 10px;
+}
+#editor p {
+    margin: 10px 0;
+}
+#editor:focus {
+    outline: none;
+    border-color: #337aff;
+}
+.toolbar {
+    margin-bottom: 10px;
+}
+.toolbar button {
+    padding: 6px 10px;
+    margin-right: 5px;
+    border-radius: 5px;
+    border: 1px solid #999;
+    cursor: pointer;
+}
+.toolbar button:hover {
+    background: #ddd;
+}
+</style>
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    
+    <p><strong>Título</strong></p>
+    {{ form.titulo }}
+
+    <p><strong>Imagem de capa</strong></p>
+    {{ form.cover }}
+
+    <p><strong>Conteúdo</strong></p>
+
+    <div class="toolbar">
+        <button type="button" onclick="cmd('bold')"><b>B</b></button>
+        <button type="button" onclick="cmd('italic')"><i>I</i></button>
+        <button type="button" onclick="cmd('strike')"><s>S</s></button>
+
+        <button type="button" onclick="header(1)">H1</button>
+        <button type="button" onclick="header(2)">H2</button>
+        <button type="button" onclick="header(3)">H3</button>
+
+        <button type="button" onclick="list('bullet')">• Lista</button>
+        <button type="button" onclick="list('ordered')">1. Lista</button>
+
+        <button type="button" onclick="quote()">“ Citação ”</button>
+
+        <button type="button" onclick="addLink()">🔗 Link</button>
+
+        <button type="button" onclick="uploadImage()">🖼 Imagem</button>
+    </div>
+
+    <div id="editor"></div>
+
+    {{ form.conteudo }}
+
+    <button type="submit">Publicar</button>
+</form>

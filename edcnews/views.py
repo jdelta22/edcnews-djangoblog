@@ -1,11 +1,39 @@
 from django.shortcuts import render,get_list_or_404
 from .models import Noticia
 from utils.pagination import paginate_queryset
-
+from django.core.paginator import Paginator
+from django.http import JsonResponse
+from django.template.loader import render_to_string
+from .forms import NoticiaForm
+from django.shortcuts import redirect
+from django.views.decorators.csrf import csrf_exempt
+from django.core.files.storage import default_storage
+import uuid
 # Create your views here.
 def home(request):
     noticias = Noticia.objects.order_by('-data_publicacao')[:3]
-    return render(request, 'edcnews/pages/home.html', context={'noticias': noticias})
+    pafinator = Paginator(noticias, 5)
+    page_obj = pafinator.get_page(1)
+    return render(request, 'edcnews/pages/home.html', context={
+        'noticias': page_obj.object_list,
+        page_obj: page_obj})
+
+def load_more_news(request):
+    page = int(request.GET.get("page", 2))
+
+    noticias = Noticia.objects.all().order_by("-data_publicacao")
+    paginator = Paginator(noticias, 5)
+    page_obj = paginator.get_page(page)
+
+    html = render_to_string("edcnews/partials/news-itens.html", {
+        "noticias": page_obj.object_list
+    })
+
+    return JsonResponse({
+        "has_next": page_obj.has_next(),
+        "html": html,
+    })
+
 
 def news_detail(request, news_id):
     noticia = Noticia.objects.get(id=news_id)
@@ -50,3 +78,27 @@ def about(request):
 
 def contact(request):
     return render(request, 'edcnews/pages/contact.html')
+
+def criar_noticia(request):
+    if request.method == "POST":
+        form = NoticiaForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect("home")
+    else:
+        form = NoticiaForm()
+
+    return render(request, "edcnews/pages/criar-noticia.html", {"form": form})
+
+@csrf_exempt
+def upload_imagem(request):
+    if request.method == "POST" and request.FILES.get("image"):
+        arquivo = request.FILES["image"]
+        nome = f"tiptap/{uuid.uuid4()}_{arquivo.name}"
+
+        caminho = default_storage.save(nome, arquivo)
+        url = default_storage.url(caminho)
+
+        return JsonResponse({"url": url})
+
+    return JsonResponse({"error": "no image"}, status=400)
