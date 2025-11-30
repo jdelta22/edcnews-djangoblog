@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-dx(c5&l88q9mc^7z1j6nc02z*161*kzv$c1()4)xiv*3l+4w@7'
+SECRET_KEY = 'django-insecure-dx(c5&l88q9mc^7z1j6nc02z*161*kzv$c1()4)xiv*3+4w@7'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -37,8 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    #meuapp
+    # meuapp
     'edcnews',
+    'ckeditor',
+    'ckeditor_uploader',
 ]
 
 MIDDLEWARE = [
@@ -127,3 +129,26 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CKEDITOR_UPLOAD_PATH = "uploads/"  # Subpasta dentro de MEDIA_ROOT
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': [
+            ['Styles', 'Format', 'FontSize'],
+            ['Bold', 'Italic', 'Underline', 'Strike', 'RemoveFormat'],
+            ['TextColor', 'BGColor'],
+            ['NumberedList', 'BulletedList', 'Outdent', 'Indent', 'Blockquote'],
+            ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
+            ['Link', 'Unlink', 'Anchor', 'Image', 'Table', 'HorizontalRule', 'SpecialChar'],
+            ['Maximize', 'ShowBlocks'],
+            ['Undo', 'Redo'],
+        ],
+        # Certifique-se de manter as outras configurações que você já tinha:
+        'height': 500,
+        'width': '100%',
+        'uiColor': '#f3f3f3',
+        'extraPlugins': 'codesnippet,image2,widget',
+        'removePlugins': 'resize',
+    },
+}

@@ -5,7 +5,12 @@ from .models import Noticia
 class NoticiaForm(forms.ModelForm):
     class Meta:
         model = Noticia
-        fields = ["titulo", "cover", "conteudo"]
-        widgets = {
-            "conteudo": forms.HiddenInput(),  # TipTap preenche
-        }
+        # Include all fields you want to be editable in the form
+        fields = [
+            'cover',
+            'titulo',
+            'slug',
+            'descricao',
+            'conteudo',
+            'categoria'
+        ]

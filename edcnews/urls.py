@@ -1,8 +1,8 @@
-from django.urls import path, include
+from django.urls import path
 from . import views
 from django.conf.urls.static import static
 from django.conf import settings
-
+from .views import NoticiaCreateView
 
 
 urlpatterns = [
@@ -14,8 +14,7 @@ urlpatterns = [
     path('category/<int:category_id>/', views.category_news, name='category_news'),
     path('contact/', views.contact, name='contact' ),
     path("load-more-news/", views.load_more_news, name="load_more_news"),
-    path('create-news/', views.criar_noticia, name='criar_noticia'),
-    path("upload-imagem/", views.upload_imagem, name="upload_imagem"),
+    path('create/', NoticiaCreateView.as_view(), name='create')
 ]
 
 

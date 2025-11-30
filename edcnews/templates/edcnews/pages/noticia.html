@@ -28,7 +28,7 @@
                 <div class="news-description">
                     <h2 class="subtitle-uni">{{ noticia.descricao }}</h2>
                     <div class="news-content-uni">
-                        {{ noticia.conteudo|linebreaks }}
+                        {{ noticia.conteudo | safe }}
                 </div>    
             </div>
 
