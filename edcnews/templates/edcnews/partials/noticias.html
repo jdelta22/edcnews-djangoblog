@@ -6,24 +6,24 @@
             <div class="author-info">
                 <span class="author-item">
                     {% if noticia.author %}
-                        {{ noticia.author.username }}
+                        {{ noticia.author.user.username }}
                     {% else %}
                         Autor Desconhecido
                     {% endif %}
                 </span>
                 <span class="created-at">{{ noticia.data_publicacao|date:"d/m/Y" }}</span> 
                 <span class="news-category">
-                    <a href="{% url 'category_news' noticia.categoria.id %}">{{ noticia.categoria.nome }}</a>
+                    <a href="{% url 'news:category_news' noticia.categoria.id %}">{{ noticia.categoria.nome }}</a>
                 </span>
             </div> 
         </div>
         
         <div class="news-information">
             <div class="news-title">
-                <a href="{% url 'news_detail' noticia.id %}"><h1 class="news-title">{{ noticia.titulo }}</h1></a>
+                <a href="{% url 'news:news_detail' noticia.id %}"><h1 class="news-title">{{ noticia.titulo }}</h1></a>
             </div>
             <div class="news-description">
-                <a href="{% url 'news_detail' noticia.id %}"><p class="subtitle">{{ noticia.descricao }}</p></a>
+                <a href="{% url 'news:news_detail' noticia.id %}"><p class="subtitle">{{ noticia.descricao }}</p></a>
             </div>    
         </div>
 

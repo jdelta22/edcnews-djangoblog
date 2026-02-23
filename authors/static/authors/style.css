@@ -1,0 +1,99 @@
+.dashboard-header {
+  margin: 40px auto 30px;
+  width: 85%;
+}
+
+.dashboard-title {
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+
+.dashboard-subtitle {
+  color: #666;
+}
+
+/* CONTAINER */
+.dashboard-content {
+  width: 85%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ALERT */
+.dashboard-alert {
+  background-color: #d4edda;
+  color: #155724;
+  padding: 12px;
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+/* CARD */
+.news-card {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: 0.2s;
+}
+
+.news-card:hover {
+  transform: translateY(-4px);
+}
+
+/* TEXT */
+.news-title {
+  margin: 0 0 8px;
+}
+
+.news-description {
+  color: #555;
+  margin-bottom: 8px;
+}
+
+.news-date {
+  font-size: 13px;
+  color: #888;
+}
+
+/* ACTIONS */
+.news-actions {
+  display: flex;
+  gap: 10px;
+}
+.btn {
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: none;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-edit {
+  background-color: #007bff;
+  color: white;
+}
+
+.btn-delete {
+  background-color: #dc3545;
+  color: white;
+}
+
+.delete-form {
+  margin: 0;
+}
+/* EMPTY */
+.empty-message {
+  text-align: center;
+  color: #777;
+  margin-top: 40px;
+}

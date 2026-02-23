@@ -1,11 +1,13 @@
 {% load static %}
 {% include "edcnews/partials/head.html"%}
-
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <title>{% block title %}{% endblock title %}</title>
+    {% block extra_css %}{% endblock %}
 </head>
+
 <body>
     {% include 'edcnews/partials/header.html' %}
 
@@ -19,4 +21,5 @@
 <footer>
     {% include 'edcnews/partials/footer.html' %}
 </footer>
+
 </html>

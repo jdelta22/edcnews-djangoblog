@@ -1,20 +1,19 @@
-from django.urls import path
-from . import views
-from django.conf.urls.static import static
 from django.conf import settings
-from .views import NoticiaCreateView
+from django.conf.urls.static import static
+from django.urls import path
 
+from . import views
 
+app_name = "news"
 urlpatterns = [
-    path('about/', views.about, name='about' ),
-    path('', views.home, name='home'),
-    path('search/', views.search, name='search' ),
-    path('news/<int:news_id>/', views.news_detail, name='news_detail'),
-    path('all-news/', views.all_news, name='all_news'),
-    path('category/<int:category_id>/', views.category_news, name='category_news'),
-    path('contact/', views.contact, name='contact' ),
+    path("about/", views.about, name="about"),
+    path("", views.home, name="home"),
+    path("search/", views.search, name="search"),
+    path("news/<int:news_id>/", views.news_detail, name="news_detail"),
+    path("all-news/", views.all_news, name="all_news"),
+    path("category/<int:category_id>/", views.category_news, name="category_news"),
+    path("contact/", views.contact, name="contact"),
     path("load-more-news/", views.load_more_news, name="load_more_news"),
-    path('create/', NoticiaCreateView.as_view(), name='create')
 ]
 
 

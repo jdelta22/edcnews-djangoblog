@@ -1,0 +1,62 @@
+{% extends "global/base.html" %}
+{% load static %}
+{% block title %}Perfil de {{ user.username }}{% endblock %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'authors/style.css' %}">
+{% endblock extra_css %}
+{% block content %}
+
+
+<div class="dashboard-header">
+    <h2 class="dashboard-title">Dashboard do Autor</h2>
+    <p class="dashboard-subtitle">
+        Bem-vindo ao seu painel de controle, onde você pode gerenciar suas notícias e perfil.
+    </p>
+</div>
+
+<div class="dashboard-content">
+    <a href="{% url 'authors:create' %}" class="btn-edit btn">
+        Criar Nova Notícia
+                </a>
+    {% if messages %}
+        {% for message in messages %}
+            <div class="dashboard-alert">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    {% for news in noticias %}
+        <div class="news-card">
+
+            <div class="news-card-body">
+                <h3 class="news-title">{{ news.titulo }}</h3>
+                <p class="news-description">{{ news.descricao }}</p>
+                <span class="news-date">{{ news.data_publicacao }}</span>
+            </div>
+
+            <div class="news-actions">
+                <a href="{% url 'authors:update' news.id %}" class="btn-edit btn">
+                    Editar
+                </a>
+
+                <form action="{% url 'authors:delete' news.pk %}" method="post" class="delete-form">
+                    {% csrf_token %}
+                    <button type="submit"
+                            class="btn btn-delete"
+                            onclick="return confirm('Tem certeza que deseja deletar esta notícia?')">
+                        Deletar
+                    </button>
+                </form>
+            </div>
+
+        </div>
+
+    {% empty %}
+        <p class="empty-message">
+            Você ainda não tem notícias publicadas.
+        </p>
+    {% endfor %}
+
+</div>
+{% endblock content %}

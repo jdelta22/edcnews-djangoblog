@@ -11,13 +11,13 @@
                 <div class="author-info">
                     <span class="author-item">
                         {% if noticia.author %}
-                            {{ noticia.author.username }}
+                            {{ noticia.author.user.username }}
                         {% else %}
                             Autor Desconhecido
                         {% endif %}
                     </span>
                     <span class="created-at">{{ noticia.data_publicacao|date:"d/m/Y" }}</span>
-                    <span class="news-category"><a href="{% url 'category_news' noticia.categoria.id %}">{{ noticia.categoria }}</a></span>
+                    <span class="news-category"><a href="{% url 'news:category_news' noticia.categoria.id %}">{{ noticia.categoria }}</a></span>
                 </div> 
             </div>
             

@@ -1,6 +1,7 @@
-from django.db import models
-from django.contrib.auth.models import User
 from ckeditor_uploader.fields import RichTextUploadingField
+from django.db import models
+
+from authors.models import Author
 
 # Create your models here.
 
@@ -14,13 +15,15 @@ class Categoria(models.Model):
 
 
 class Noticia(models.Model):
-    cover = models.ImageField(upload_to='edcnews/images/%Y/%m/%d/', blank=True)
+    cover = models.ImageField(upload_to="edcnews/images/%Y/%m/%d/", blank=True)
     titulo = models.CharField(max_length=200)
     slug = models.SlugField(unique=True)
     descricao = models.CharField(max_length=200)
     conteudo = RichTextUploadingField()
     data_publicacao = models.DateTimeField(auto_now_add=True)
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    author = models.ForeignKey(
+        Author, on_delete=models.CASCADE, related_name="noticias"
+    )
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
     views = models.PositiveIntegerField(default=0)  # contador de visualizações
 

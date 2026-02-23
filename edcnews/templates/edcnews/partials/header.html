@@ -24,7 +24,7 @@
         </div>
 
         <div class="search-bar" id="search-bar">
-            <form action="{% url 'search' %}" method="get">
+            <form action="{% url 'news:search' %}" method="get">
                 <input type="text" name="q" placeholder="Buscar..." class="search-input">
                 <button type="submit" class="search-btn">
                     <i class="fa-solid fa-magnifying-glass"></i>
@@ -34,8 +34,8 @@
         
         
         <ul class="menu-links">
-            <li><a href="{% url 'about' %}">Sobre</a></li>
-            <li><a href="{% url 'contact' %}">Contato</a></li>
+            <li><a href="{% url 'news:about' %}">Sobre</a></li>
+            <li><a href="{% url 'news:contact' %}">Contato</a></li>
         </ul>
 
         <!-- Redes sociais -->
