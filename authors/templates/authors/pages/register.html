@@ -1,0 +1,53 @@
+{% extends "global/base.html" %}
+{% load static %}
+
+{% block title %}Registro de Autor{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'authors/formsauthors.css' %}">
+{% endblock extra_css %}
+
+{% block content %}
+<div class="login-container register-container">
+    <div class="login-content">
+        <h2>Criar Conta</h2>
+        <form method="post" enctype="multipart/form-data" id="register-form">
+            {% csrf_token %}
+
+            {% for field in form %}
+                <div class="form-group {% if field.name == 'profile_picture' %}profile-field-container{% endif %}">
+                    
+                    {% if field.name == 'profile_picture' %}
+                        <label>Foto de Perfil</label>
+                        <div class="image-preview-wrapper">
+                            <label for="{{ field.id_for_label }}" class="image-label">
+                                <img id="image-preview" src="{% static 'images/placeholder.png' %}" alt="Preview">
+                                <div class="upload-icon">+</div>
+                            </label>
+                            {{ field }} </div>
+                    {% else %}
+                        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                        {{ field }}
+                    {% endif %}
+                    
+                    {% if field.errors %}
+                        <div class="errors">{{ field.errors }}</div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+
+            <button type="submit">Registrar</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    // Lógica para trocar a imagem assim que selecionada
+    document.getElementById('id_profile_picture').onchange = function (evt) {
+        const [file] = this.files
+        if (file) {
+            document.getElementById('image-preview').src = URL.createObjectURL(file)
+        }
+    }
+</script>
+{% endblock %}

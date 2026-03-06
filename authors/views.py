@@ -8,7 +8,8 @@ from django.views.generic.edit import CreateView, DeleteView, UpdateView
 
 from edcnews.models import Noticia
 
-from .forms import NoticiaForm
+from .forms import AuthorRegistrationForm, NoticiaForm
+from .models import Author
 
 # Create your views here.
 
@@ -18,6 +19,27 @@ class Login(LoginView):
 
     def get_success_url(self):
         return reverse_lazy("authors:dashboard")
+
+
+class RegisterAuthor(CreateView):
+    template_name = "authors/pages/register.html"
+    success_url = reverse_lazy("authors:login")
+    form_class = AuthorRegistrationForm
+
+    def form_valid(self, form):
+        # 1. Salva o User (mas não commita no banco ainda se quiser ser cauteloso)
+        user = form.save()
+
+        # 2. Cria o Author usando o usuário recém-criado e os dados do formulário
+        Author.objects.create(
+            user=user,
+            name=form.cleaned_data.get("name"),
+            email=form.cleaned_data.get("email"),
+            bio=form.cleaned_data.get("bio"),
+            profile_picture=form.cleaned_data.get("profile_picture"),
+        )
+
+        return super().form_valid(form)
 
 
 class Dashboard(LoginRequiredMixin, ListView):
@@ -36,7 +58,7 @@ class NoticiaCreateView(LoginRequiredMixin, CreateView):
     form_class = NoticiaForm
 
     # 3. Template: O arquivo HTML a ser renderizado
-    template_name = "edcnews/pages/criar-noticia.html"
+    template_name = "authors/pages/criar-noticia.html"
 
     # 4. URL de Sucesso: Para onde redirecionar após o sucesso
     success_url = reverse_lazy("authors:dashboard")
@@ -51,7 +73,7 @@ class NoticiaCreateView(LoginRequiredMixin, CreateView):
 class NoticiaUpdateView(LoginRequiredMixin, UpdateView):
     model = Noticia
     form_class = NoticiaForm
-    template_name = "edcnews/pages/editar.html"
+    template_name = "authors/pages/editar-noticia.html"
     success_url = reverse_lazy("authors:dashboard")
 
 

@@ -6,11 +6,13 @@ from .views import (
     NoticiaCreateView,
     NoticiaDeleteView,
     NoticiaUpdateView,
+    RegisterAuthor,
 )
 
 app_name = "authors"
 urlpatterns = [
     path("login/", Login.as_view(), name="login"),
+    path("register/", RegisterAuthor.as_view(), name="register"),
     path("dashboard/", Dashboard.as_view(), name="dashboard"),
     path("create/", NoticiaCreateView.as_view(), name="create"),
     path("update/<int:pk>/", NoticiaUpdateView.as_view(), name="update"),

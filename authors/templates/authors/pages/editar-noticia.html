@@ -1,0 +1,23 @@
+{% extends "global/base.html" %}
+{% load static %}
+{% block title %}Editar Noticia: {{ noticia.titulo }}{% endblock %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'authors/news.css' %}">
+{% endblock extra_css %}
+
+{% block content %}
+<div class="form-create-news">
+    <div class="form-create-news-content">
+        <h1>Editar Noticia: {{ noticia.titulo }}</h1>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }} 
+            <button type="submit">Salvar</button>
+        </form>
+    </div>
+</div>
+
+{% block formuse %}{{ form.media }}{% endblock formuse %}
+{% endblock content %}
+    
+

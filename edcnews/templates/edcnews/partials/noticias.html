@@ -2,11 +2,17 @@
     <div class="noticia">
         <img src="{{ noticia.cover.url }}" alt="" class="imagem-noticia">
         <div class="news-author">
-            <i class="fa-solid fa-circle-user"></i>
+            <div class="author-mini-wrapper">
+                {% if noticia.author.profile_picture %}
+                    <img src="{{ noticia.author.profile_picture.url }}" alt="{{ noticia.author.name }}" class="author-mini-img">
+                {% else %}
+                    <i class="fa-solid fa-circle-user author-mini-icon"></i>
+                {% endif %}
+            </div>
             <div class="author-info">
                 <span class="author-item">
                     {% if noticia.author %}
-                        {{ noticia.author.user.username }}
+                        {{ noticia.author.name }}
                     {% else %}
                         Autor Desconhecido
                     {% endif %}

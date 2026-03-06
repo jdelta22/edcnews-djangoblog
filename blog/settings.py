@@ -135,29 +135,48 @@ CKEDITOR_UPLOAD_PATH = "uploads/"  # Subpasta dentro de MEDIA_ROOT
 
 CKEDITOR_CONFIGS = {
     "default": {
-        "toolbar": [
-            ["Styles", "Format", "FontSize"],
-            ["Bold", "Italic", "Underline", "Strike", "RemoveFormat"],
-            ["TextColor", "BGColor"],
-            ["NumberedList", "BulletedList", "Outdent", "Indent", "Blockquote"],
+        # Nome da toolbar definida abaixo
+        "toolbar": "Custom",
+        "toolbar_Custom": [
+            ["Format"],  # Mantém a hierarquia de títulos (H1, H2, etc)
+            ["Bold", "Italic", "Underline", "RemoveFormat"],
+            ["NumberedList", "BulletedList", "-", "Outdent", "Indent", "Blockquote"],
             ["JustifyLeft", "JustifyCenter", "JustifyRight", "JustifyBlock"],
-            [
-                "Link",
-                "Unlink",
-                "Anchor",
-                "Image",
-                "Table",
-                "HorizontalRule",
-                "SpecialChar",
-            ],
-            ["Maximize", "ShowBlocks"],
+            ["Link", "Unlink", "Image"],
+            ["Maximize"],
             ["Undo", "Redo"],
         ],
-        # Certifique-se de manter as outras configurações que você já tinha:
-        "height": 500,
+        "height": 800,
         "width": "100%",
-        "uiColor": "#f3f3f3",
-        "extraPlugins": "codesnippet,image2,widget",
-        "removePlugins": "resize",
+        # --- SEGURANÇA E LIMPEZA NO FRONTEND ---
+        # Impede a inserção de tags perigosas via plugins
+        "removePlugins": "resize,flash,iframe",
+        # Plugins extras (image2 é essencial para o redimensionamento seguro)
+        "extraPlugins": ",".join(
+            [
+                "image2",
+                "widget",
+                "lineutils",
+                "clipboard",
+                "dialog",
+                "dialogui",
+            ]
+        ),
+        # Força a limpeza de estilos ao colar textos do Word ou Google Docs
+        "forcePasteAsPlainText": False,
+        "pasteFromWordRemoveFontStyles": True,
+        "pasteFromWordRemoveStyles": True,
+        "pasteFromWordNumberedHeadingToList": True,
+        # Melhora o manuseio de imagens (permite legendas e alinhamento real)
+        "image2_alignClasses": [
+            "image-align-left",
+            "image-align-center",
+            "image-align-right",
+        ],
+        "image2_disableResizer": False,
     },
 }
+
+# Configuração de Upload (Certifique-se que estas linhas também existam)
+CKEDITOR_UPLOAD_PATH = "uploads/"
+CKEDITOR_IMAGE_BACKEND = "pillow"
