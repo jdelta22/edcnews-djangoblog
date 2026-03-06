@@ -11,12 +11,13 @@
 <body>
     {% include 'edcnews/partials/header.html' %}
 
-
-    {% block content %}
-    {% endblock %}
-    <script src="{% static 'edcnews/js/menu.js' %}"></script>
-    <script src="{% static 'edcnews/js/scrollpage.js' %}"></script>
-    {% block formuse %}{% endblock formuse %}
+    <main>
+        {% block content %}
+        {% endblock %}
+        <script src="{% static 'edcnews/js/menu.js' %}"></script>
+        <script src="{% static 'edcnews/js/scrollpage.js' %}"></script>
+        {% block formuse %}{% endblock formuse %}
+    </main>
 </body>
 <footer>
     {% include 'edcnews/partials/footer.html' %}

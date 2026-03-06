@@ -1,25 +1,28 @@
 {% extends "global/base.html" %}
-
+{% load static %}
 {% block title %}{{ noticia.titulo }}{% endblock %}
-
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'edcnews/css/new-detail.css' %}">
+{% endblock extra_css %}
 {% block content %}
-    <div class="container-new">
-        <div class="news_detail-uni">
-            <img src="{{ noticia.cover.url }}" alt="" class="detail-img-uni">
+<div class="container-new">
+
+    <div class="news-detail-uni">
+        <img src="{{ noticia.cover.url }}" alt="" class="detail-img-uni">
             <div class="news-author">
                 <div class="author-mini-wrapper">
                     {% if noticia.author.profile_picture %}
                         <img src="{{ noticia.author.profile_picture.url }}" alt="{{ noticia.author.name }}" class="author-mini-img">
-                    {% else %}
+                        {% else %}
                         <i class="fa-solid fa-circle-user author-mini-icon"></i>
-                    {% endif %}
-                </div>
+                        {% endif %}
+                    </div>
                 <div class="author-info">
                     <span class="author-item">
                         {% if noticia.author %}
-                            {{ noticia.author.name }}
+                        {{ noticia.author.name }}
                         {% else %}
-                            Autor Desconhecido
+                        Autor Desconhecido
                         {% endif %}
                     </span>
                     <span class="created-at">{{ noticia.data_publicacao|date:"d/m/Y" }}</span>
@@ -35,9 +38,9 @@
                     <h2 class="subtitle-uni">{{ noticia.descricao }}</h2>
                     <div class="news-content-uni">
                         {{ noticia.conteudo | safe }}
-                </div>    
+                    </div>    
+                </div>
+                
             </div>
-
         </div>
-    </div>
 {% endblock %}

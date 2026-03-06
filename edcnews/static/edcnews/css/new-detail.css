@@ -1,0 +1,141 @@
+.container-new {
+  max-width: 900px; /* Largura ideal para leitura de notícias */
+  margin: 40px auto;
+  padding: 0 20px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Imagem de Capa */
+.detail-img-uni {
+  width: 100%;
+  height: auto;
+  max-height: 500px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  margin-bottom: 25px;
+}
+
+/* Bloco do Autor */
+.news-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eee;
+}
+
+/* Foto do Autor (Tamanho Ícone como pedido) */
+.author-mini-img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
+.author-mini-icon {
+  font-size: 32px;
+  color: #888;
+}
+
+/* Info do Autor e Metadados */
+.author-info {
+  display: flex;
+  flex-wrap: wrap; /* Para quebrar linha no celular se necessário */
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.author-item {
+  font-weight: bold;
+  color: #333;
+}
+
+.created-at::before {
+  content: "•";
+  margin-right: 5px;
+  color: #ccc;
+}
+
+.news-category a {
+  background: #f0f2f5;
+  padding: 4px 12px;
+  border-radius: 20px;
+  text-decoration: none;
+  color: #007bff;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.news-category a:hover {
+  background: #007bff;
+  color: white;
+}
+
+/* Título e Descrição */
+.news-title-detail-uni h1 {
+  font-size: 2.5rem;
+  line-height: 1.2;
+  color: #1a1a1a;
+  margin-bottom: 15px;
+}
+
+.subtitle-uni {
+  font-size: 1.3rem;
+  color: #555;
+  font-weight: 400;
+  line-height: 1.5;
+  margin-bottom: 30px;
+  border-left: 4px solid #007bff;
+  padding-left: 15px;
+}
+
+/* CONTEÚDO DO CKEDITOR (Muito importante) */
+.news-content-uni {
+  line-height: 1.8;
+  font-size: 1.15rem;
+  color: #333;
+  word-wrap: break-word;
+}
+
+.news-content-uni p {
+  margin-bottom: 20px;
+}
+
+.news-content-uni img {
+  max-width: 100%; /* Impede que imagens do editor estourem o celular */
+  height: auto !important;
+  border-radius: 8px;
+}
+
+/* --- RESPONSIVIDADE (Celular e Tablet) --- */
+
+@media (max-width: 768px) {
+  .container-new {
+    margin: 20px auto;
+  }
+
+  .news-title-detail-uni h1 {
+    font-size: 1.8rem; /* Título menor no celular */
+  }
+
+  .author-info {
+    gap: 5px;
+  }
+
+  .created-at::before {
+    display: none; /* Remove o ponto para ganhar espaço */
+  }
+
+  .author-info span {
+    width: 100%; /* Faz cada item ocupar uma linha se for muito pequeno */
+  }
+
+  .news-category {
+    margin-top: 5px;
+  }
+}
